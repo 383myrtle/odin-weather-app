@@ -4,6 +4,16 @@ import "./normalize.css";
 let cityData;
 let currentConditions;
 
+const searchInput = document.getElementById("search");
+const searchButton = document.getElementById("submit-search");
+
+searchButton.addEventListener("click", (e) => {
+  e.preventDefault();
+  const city = searchInput.value;
+  searchInput.value = "";
+  search(city);
+});
+
 async function search(city) {
   try {
     const response = await fetch(
@@ -31,7 +41,7 @@ function getCityData(data) {
     city: address[0],
     province: address[1],
     country: address[2],
-    weatherDescription: data.description
+    weatherDescription: data.description,
   };
 }
 
@@ -40,6 +50,3 @@ function getCurrentConditions(data) {
     data.currentConditions;
   return { conditions, datetimeEpoch, temp, humidity, precip, precipprob };
 }
-
-search("Houston");
-
