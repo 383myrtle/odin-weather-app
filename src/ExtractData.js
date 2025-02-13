@@ -28,9 +28,9 @@ function extractCityData(data) {
 }
 
 function extractCurrentConditions(data) {
-  const { conditions, datetimeEpoch, temp, humidity, precip, precipprob } =
+  const { conditions, datetimeEpoch, temp, humidity, precipprob, windspeed } =
     data.currentConditions;
-  return { conditions, datetimeEpoch, temp, humidity, precip, precipprob };
+  return { conditions, datetimeEpoch, temp, humidity, precipprob, windspeed };
 }
 
 export { search };
