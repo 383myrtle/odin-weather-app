@@ -11,7 +11,7 @@ async function handleSearch(e) {
     alert("Error. City not found. Please try again.")
     return
   }
-  updateWeather(result.cityData, result.currentConditions);
+  updateWeather(result.cityData, result.currentConditions, result.forecast);
   console.log(result.cityData);
   console.log(result.currentConditions);
 }

@@ -1,6 +1,8 @@
 const searchInput = document.getElementById("search");
 const searchBtn = document.getElementById("submit-search");
-const weatherImage = document.querySelector(".weather-icon");
+const weatherIconLarge = document.querySelector(".weather-icon-large");
+
+const sidebar = document.querySelector(".sidebar");
 
 const cityName = document.querySelector(".city-name");
 const countryName = document.querySelector(".country-name");
@@ -14,7 +16,7 @@ const precipChance = document.querySelector(".precipitation-chance");
 export {
   searchInput,
   searchBtn,
-  weatherImage,
+  weatherIconLarge,
   cityName,
   countryName,
   temperature,
@@ -23,4 +25,5 @@ export {
   humidity,
   windSpeed,
   precipChance,
+  sidebar,
 };

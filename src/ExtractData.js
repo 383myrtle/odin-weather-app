@@ -11,6 +11,7 @@ async function search(city) {
     return {
       cityData: extractCityData(data),
       currentConditions: extractCurrentConditions(data),
+      forecast: extractForecastData(data),
     };
   } catch (error) {
     console.log(error);
@@ -28,9 +29,36 @@ function extractCityData(data) {
 }
 
 function extractCurrentConditions(data) {
-  const { conditions, datetimeEpoch, temp, humidity, precipprob, windspeed, feelslike } =
-    data.currentConditions;
-  return { conditions, datetimeEpoch, temp, humidity, precipprob, windspeed, feelslike };
+  const {
+    conditions,
+    datetimeEpoch,
+    temp,
+    humidity,
+    precipprob,
+    windspeed,
+    feelslike,
+  } = data.currentConditions;
+  return {
+    conditions,
+    datetimeEpoch,
+    temp,
+    humidity,
+    precipprob,
+    windspeed,
+    feelslike,
+  };
+}
+
+function extractForecastData(data) {
+  const forecast = [];
+  data.days.forEach((day, index) => {
+    if (index >= 5){
+      return forecast;
+    }
+    const { datetimeEpoch, conditions, temp, icon } = day;
+    forecast.push({ datetimeEpoch, conditions, temp, icon });
+  });
+  return forecast;
 }
 
 export { search };
