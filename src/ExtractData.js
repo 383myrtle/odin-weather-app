@@ -23,14 +23,14 @@ function extractCityData(data) {
     city: address[0],
     province: address[2] ? address[1] : null,
     country: address[2] ? address[2] : address[1],
-    weatherDescription: data.description,
+    description: data.description,
   };
 }
 
 function extractCurrentConditions(data) {
-  const { conditions, datetimeEpoch, temp, humidity, precipprob, windspeed } =
+  const { conditions, datetimeEpoch, temp, humidity, precipprob, windspeed, feelslike } =
     data.currentConditions;
-  return { conditions, datetimeEpoch, temp, humidity, precipprob, windspeed };
+  return { conditions, datetimeEpoch, temp, humidity, precipprob, windspeed, feelslike };
 }
 
 export { search };
