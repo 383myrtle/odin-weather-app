@@ -25,34 +25,27 @@ function extractCityData(data) {
     province: address[2] ? address[1] : null,
     country: address[2] ? address[2] : address[1],
     description: data.description,
+    lastUpdated: data.currentConditions.datetime,
   };
 }
 
 function extractCurrentConditions(data) {
-  const {
-    conditions,
-    datetimeEpoch,
-    temp,
-    humidity,
-    precipprob,
-    windspeed,
-    feelslike,
-  } = data.currentConditions;
-  return {
-    conditions,
-    datetimeEpoch,
-    temp,
-    humidity,
-    precipprob,
-    windspeed,
-    feelslike,
+  const currentConditions = {
+    Conditions: data.currentConditions.conditions,
+    Temperature: data.currentConditions.temp,
+    Humidity: data.currentConditions.humidity,
+    "Chance of precipitation": data.currentConditions.precipprob,
+    "Wind speed": data.currentConditions.windspeed,
+    "Feels like": data.currentConditions.feelslike,
   };
+
+  return currentConditions;
 }
 
 function extractForecastData(data) {
   const forecast = [];
   data.days.forEach((day, index) => {
-    if (index >= 5){
+    if (index >= 5) {
       return forecast;
     }
     const { datetimeEpoch, conditions, temp, icon } = day;
