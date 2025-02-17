@@ -14,6 +14,7 @@ async function handleSearch(e) {
   updateWeather(result.cityData, result.currentConditions, result.forecast);
   console.log(result.cityData);
   console.log(result.currentConditions);
+  console.log(result.forecast);
 }
 
 export { handleSearch };
