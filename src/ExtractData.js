@@ -32,7 +32,7 @@ function extractCityData(data) {
 
 function extractCurrentConditions(data) {
   const currentConditions = {
-    Conditions: data.currentConditions.conditions,
+    Conditions: data.currentConditions.conditions.split(", ")[0],
     Temperature: data.currentConditions.temp,
     Humidity: data.currentConditions.humidity,
     "Chance of precipitation": data.currentConditions.precipprob,
@@ -48,11 +48,13 @@ function extractCurrentConditions(data) {
 function extractForecastData(data) {
   const forecast = [];
   data.days.forEach((day, index) => {
-    if (index >= 5) {
-      return forecast;
+    if (index !== 0) {
+      if (index > 5) {
+        return forecast;
+      }
+      const { datetimeEpoch, conditions, temp, icon } = day;
+      forecast.push({ datetimeEpoch, conditions, temp, icon });
     }
-    const { datetimeEpoch, conditions, temp, icon } = day;
-    forecast.push({ datetimeEpoch, conditions, temp, icon });
   });
   return forecast;
 }
