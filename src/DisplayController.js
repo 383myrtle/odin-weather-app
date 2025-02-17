@@ -14,6 +14,7 @@ import partlyCloudyDay from "./assets/partly_cloudy.svg";
 import clearDay from "./assets/sunny.svg";
 import partlyCloudyNight from "./assets/partly_cloudy_night.svg";
 import clearNight from "./assets/clear_night.svg";
+import { format, isTomorrow } from "date-fns";
 
 const iconMap = {
   cloudy: cloudy,
@@ -26,35 +27,71 @@ const iconMap = {
 };
 
 const updateWeather = function (cityData, currentConditions, forecast) {
-  cityName.textContent = cityData.city;
-  countryName.textContent = cityData.province
-    ? cityData.province + ", " + cityData.country
-    : cityData.country;
-  weatherDescription.textContent = cityData.description;
-  weatherIconLarge.src = iconMap[cityData.icon];
-  temperature.textContent = currentConditions.Temperature;
+  clearContents(weatherDetails);
+  clearContents(sidebar);
 
-  weatherDetails.textContent = "";
+  setWeatherOverview(
+    cityData.city,
+    cityData.province,
+    cityData.country,
+    cityData.description,
+    cityData.icon,
+    currentConditions.Temperature,
+  );
+
   Object.keys(currentConditions).forEach((key) => {
-    const weatherDetail = document.createElement("p");
-    weatherDetail.textContent = key;
-    const value = document.createElement("span");
-    value.textContent = currentConditions[key];
-
-    weatherDetail.appendChild(value);
-    weatherDetails.appendChild(weatherDetail);
+    const detail = createWeatherDetail(key, currentConditions);
+    weatherDetails.appendChild(detail);
   });
 
-  sidebar.textContent = "";
   forecast.forEach((day) => {
-    const dayCard = document.createElement("div");
-    dayCard.classList.add("forecast-day");
-    dayCard.innerHTML = `
-        <h3>${new Date(day.datetimeEpoch * 1000).toDateString()}</h3>
-        <p class="temperature"><img src="${iconMap[day.icon]}" alt="Weather Icon" class="weather-icon-small">${day.temp}</p>
-        `;
+    const dayCard = createDayCard(day);
     sidebar.appendChild(dayCard);
   });
 };
+
+// Helper functions
+
+function clearContents(element) {
+  element.textContent = "";
+}
+
+function setWeatherOverview(city, province, country, desc, icon, temp) {
+  cityName.textContent = city;
+  countryName.textContent = province ? province + ", " + country : country;
+  weatherDescription.textContent = desc;
+  weatherIconLarge.src = iconMap[icon];
+  temperature.textContent = temp;
+}
+
+function createWeatherDetail(name, currentConditions) {
+  const weatherDetail = document.createElement("p");
+  weatherDetail.textContent = name;
+  const value = document.createElement("span");
+  value.textContent = currentConditions[name];
+  weatherDetail.appendChild(value);
+  return weatherDetail;
+}
+
+function createDayCard(day) {
+  const dayCard = document.createElement("div");
+  dayCard.classList.add("forecast-day");
+  const date = getDateString(day.datetimeEpoch);
+  dayCard.innerHTML = `
+      <h3>${date}</h3>
+      <p class="temperature"><img src="${iconMap[day.icon]}" alt="Weather Icon" class="weather-icon-small">${day.temp}</p>
+      `;
+  return dayCard;
+}
+
+function getDateString(epochTime) {
+  const date = new Date(epochTime * 1000);
+  console.log("Date from the function: " + date.toString());
+  if (isTomorrow(date)) {
+    return "Tomorrow";
+  } else {
+    return format(date, "eeee, do MMM");
+  }
+}
 
 export { updateWeather };
