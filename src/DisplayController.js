@@ -13,6 +13,7 @@ const updateWeather = function (cityData, currentConditions, forecast) {
     : cityData.country;
   weatherDescription.textContent = cityData.description;
 
+  weatherDetails.textContent='';
   Object.keys(currentConditions).forEach((key) => {
     const weatherDetail = document.createElement("p");
     weatherDetail.textContent = key;
@@ -23,6 +24,7 @@ const updateWeather = function (cityData, currentConditions, forecast) {
     weatherDetails.appendChild(weatherDetail);
   });
 
+  sidebar.textContent='';
   forecast.forEach((day) => {
     const dayCard = document.createElement("div");
     dayCard.classList.add("forecast-day");
