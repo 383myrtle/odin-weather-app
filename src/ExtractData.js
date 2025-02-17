@@ -26,6 +26,7 @@ function extractCityData(data) {
     country: address[2] ? address[2] : address[1],
     description: data.description,
     lastUpdated: data.currentConditions.datetime,
+    icon: data.currentConditions.icon,
   };
 }
 

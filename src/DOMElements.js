@@ -7,7 +7,7 @@ const weatherDetails = document.querySelector(".weather-details");
 
 const cityName = document.querySelector(".city-name");
 const countryName = document.querySelector(".country-name");
-const temperature = document.querySelector(".temperature");
+const temperature = document.querySelector(".main-temperature");
 const weatherDescription = document.querySelector(".weather-description");
 
 export {
