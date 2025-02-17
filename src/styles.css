@@ -53,7 +53,7 @@ header {
   height: 250px;
 }
 
-.weather-info {
+.weather-overview {
   display: flex;
   gap: 4rem;
   padding: 3rem 1rem;
