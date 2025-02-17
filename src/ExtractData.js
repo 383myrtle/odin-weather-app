@@ -38,6 +38,8 @@ function extractCurrentConditions(data) {
     "Chance of precipitation": data.currentConditions.precipprob,
     "Wind speed": data.currentConditions.windspeed,
     "Feels like": data.currentConditions.feelslike,
+    Sunrise: data.currentConditions.sunrise,
+    Sunset: data.currentConditions.sunset,
   };
 
   return currentConditions;
