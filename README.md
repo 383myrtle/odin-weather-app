@@ -1,5 +1,5 @@
 # Weather App
-![Screenshot of the app]("./src/assets/weather.png")
+![Screenshot of the app](./src/assets/weather.png)
 
 Weather app project from the [Odin Project course](https://www.theodinproject.com/lessons/node-path-javascript-weather-app). Allows users to search for weather information by city. Displays an overview of the current conditions as well as a 5-day forecast.
 
