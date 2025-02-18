@@ -3,7 +3,7 @@ import { search } from "./ExtractData";
 import { updateWeather } from "./DisplayController";
 import { getCurrentUnitGroup, setCurrentUnitGroup } from "./UnitHandler";
 
-let currentCity;
+let currentCity = "Ulaanbaataar";
 
 async function handleSearch(e) {
   e.preventDefault();
@@ -30,4 +30,4 @@ async function renderCurrentCity() {
   console.log(result.forecast);
 }
 
-export { handleSearch, changeUnitGroup };
+export { handleSearch, changeUnitGroup, renderCurrentCity };
