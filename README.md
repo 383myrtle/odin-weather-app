@@ -5,6 +5,8 @@ Weather app project from the [Odin Project course](https://www.theodinproject.co
 
 This project mostly deals with handling API requests and responses with async functions in JavaScript and using retrieved data to display relevant information.
 
+View the project [here](https://383myrtle.github.io/odin-weather-app/).
+
 ## Features
 
 - Search for weather information by city
