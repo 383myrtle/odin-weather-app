@@ -86,6 +86,7 @@ input {
   border: none;
   border-radius: 5px;
   padding: 0.2rem;
+  outline: 1px solid var(--text-color);
 }
 
 select {
