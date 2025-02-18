@@ -5,15 +5,15 @@ const UK = "uk";
 let unitGroup = METRIC;
 
 const unitMap = {
-    Conditions: "",
-    Temperature: "°C",
-    Humidity: "%",
-    "Chance of precipitation": "%",
-    "Wind speed": "kph",
-    "Feels like": "°C",
-    Sunrise: "",
-    Sunset: "",
-}
+  Conditions: "",
+  Temperature: "°C",
+  Humidity: "%",
+  "Chance of precipitation": "%",
+  "Wind speed": "kph",
+  "Feels like": "°C",
+  Sunrise: "",
+  Sunset: "",
+};
 
 const getCurrentUnitGroup = function () {
   return unitGroup;
@@ -21,27 +21,27 @@ const getCurrentUnitGroup = function () {
 
 const setCurrentUnitGroup = function (newUnitGroup) {
   unitGroup = newUnitGroup;
-  switch (unitGroup){
+  switch (unitGroup) {
     case IMPERIAL:
-        unitMap["Temperature"] = "°F";
-        unitMap["Wind speed"] = "mph";
-        unitMap["Feels like"] = "°F";
-        break;
+      unitMap["Temperature"] = "°F";
+      unitMap["Wind speed"] = "mph";
+      unitMap["Feels like"] = "°F";
+      break;
     case METRIC:
-        unitMap["Temperature"] = "°C";
-        unitMap["Wind speed"] = "kph";
-        unitMap["Feels like"] = "°C";
-        break;
+      unitMap["Temperature"] = "°C";
+      unitMap["Wind speed"] = "kph";
+      unitMap["Feels like"] = "°C";
+      break;
     case UK:
-        unitMap["Temperature"] = "°C";
-        unitMap["Wind speed"] = "mph";
-        unitMap["Feels like"] = "°C";
-        break;
+      unitMap["Temperature"] = "°C";
+      unitMap["Wind speed"] = "mph";
+      unitMap["Feels like"] = "°C";
+      break;
   }
 };
 
-const getUnit = function(key){
-    return unitMap[key];
-}
+const getUnit = function (key) {
+  return unitMap[key];
+};
 
 export { getCurrentUnitGroup, setCurrentUnitGroup, getUnit };

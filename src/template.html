@@ -1,38 +1,38 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <header>
-            <form>
-                <input type="text" id="search" placeholder="Search for a city">
-                <button type="submit" id="submit-search">Search</button>
-            </form>
-            <select id="unit-group">
-                <option value="metric">Metric</option>
-                <option value="us">Imperial</option>
-                <option value="uk">UK (°C, miles)</option>
-            </select>
-        </header>
-        <div class="main">
-            <div class="current-weather">
-                <div class="weather-overview">
-                    <img src="" alt="Weather Icon" class="weather-icon-large">
-                    <div>
-                        <h1 class="city-name">City Name</h1>
-                        <h2 class="country-name">Country Name</h2>
-                        <p class="main-temperature">Temperature</p>
-                        <p class="weather-description">Description</p>
-                    </div>
-                </div>
-                <div class="weather-details"></div>
+      <header>
+        <form>
+          <input type="text" id="search" placeholder="Search for a city" />
+          <button type="submit" id="submit-search">Search</button>
+        </form>
+        <select id="unit-group">
+          <option value="metric">Metric</option>
+          <option value="us">Imperial</option>
+          <option value="uk">UK (°C, miles)</option>
+        </select>
+      </header>
+      <div class="main">
+        <div class="current-weather">
+          <div class="weather-overview">
+            <img src="" alt="Weather Icon" class="weather-icon-large" />
+            <div>
+              <h1 class="city-name">City Name</h1>
+              <h2 class="country-name">Country Name</h2>
+              <p class="main-temperature">Temperature</p>
+              <p class="weather-description">Description</p>
             </div>
+          </div>
+          <div class="weather-details"></div>
         </div>
-        <div class="sidebar"></div>
+      </div>
+      <div class="sidebar"></div>
     </div>
-</body>
+  </body>
 </html>
