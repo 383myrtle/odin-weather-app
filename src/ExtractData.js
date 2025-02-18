@@ -1,7 +1,7 @@
-async function search(city) {
+async function search(city, unitGroup) {
   try {
     const response = await fetch(
-      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=us&key=7CZC8PYPKKCMVFDUTXRRJ2YS4&contentType=json`,
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=${unitGroup}&key=7CZC8PYPKKCMVFDUTXRRJ2YS4&contentType=json`,
     );
     if (!response.ok) {
       throw new Error("Error, please enter a valid city.");

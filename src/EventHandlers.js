@@ -1,12 +1,15 @@
 import { searchInput } from "./DOMElements";
 import { search } from "./ExtractData";
 import { updateWeather } from "./DisplayController";
+import { getCurrentUnitGroup, setCurrentUnitGroup } from "./UnitHandler";
+
+let currentCity;
 
 async function handleSearch(e) {
   e.preventDefault();
-  const city = searchInput.value;
+  currentCity = searchInput.value;
   searchInput.value = "";
-  const result = await search(city)
+  const result = await search(currentCity, getCurrentUnitGroup())
   if (!result){
     alert("Error. City not found. Please try again.")
     return
@@ -17,4 +20,9 @@ async function handleSearch(e) {
   console.log(result.forecast);
 }
 
-export { handleSearch };
+function changeUnitGroup(e){
+  const unitGroup = e.currentTarget.value;
+  setCurrentUnitGroup(unitGroup);
+}
+
+export { handleSearch, changeUnitGroup };

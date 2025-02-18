@@ -7,6 +7,7 @@ import {
   weatherIconLarge,
   temperature,
 } from "./DOMElements";
+import { getUnit } from "./UnitHandler";
 import cloudy from "./assets/cloudy.svg";
 import rainy from "./assets/rainy.svg";
 import thunderstorm from "./assets/thunderstorm.svg";
@@ -61,14 +62,14 @@ function setWeatherOverview(city, province, country, desc, icon, temp) {
   countryName.textContent = province ? province + ", " + country : country;
   weatherDescription.textContent = desc;
   weatherIconLarge.src = iconMap[icon];
-  temperature.textContent = temp;
+  temperature.textContent = temp + getUnit("Temperature");
 }
 
 function createWeatherDetail(name, currentConditions) {
   const weatherDetail = document.createElement("p");
   weatherDetail.textContent = name;
   const value = document.createElement("span");
-  value.textContent = currentConditions[name];
+  value.textContent = currentConditions[name] + getUnit(name);
   weatherDetail.appendChild(value);
   return weatherDetail;
 }
@@ -79,7 +80,7 @@ function createDayCard(day) {
   const date = getDateString(day.datetimeEpoch);
   dayCard.innerHTML = `
       <h3>${date}</h3>
-      <p class="temperature"><img src="${iconMap[day.icon]}" alt="Weather Icon" class="weather-icon-small">${day.temp}</p>
+      <p class="temperature"><img src="${iconMap[day.icon]}" alt="Weather Icon" class="weather-icon-small">${day.temp + getUnit("Temperature")}</p>
       `;
   return dayCard;
 }
