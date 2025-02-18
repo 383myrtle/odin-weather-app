@@ -6,11 +6,11 @@ let unitGroup = METRIC;
 
 const unitMap = {
     Conditions: "",
-    Temperature: "C",
+    Temperature: "°C",
     Humidity: "%",
     "Chance of precipitation": "%",
     "Wind speed": "kph",
-    "Feels like": "C",
+    "Feels like": "°C",
     Sunrise: "",
     Sunset: "",
 }
@@ -23,19 +23,19 @@ const setCurrentUnitGroup = function (newUnitGroup) {
   unitGroup = newUnitGroup;
   switch (unitGroup){
     case IMPERIAL:
-        unitMap["Temperature"] = "F";
+        unitMap["Temperature"] = "°F";
         unitMap["Wind speed"] = "mph";
-        unitMap["Feels like"] = "F";
+        unitMap["Feels like"] = "°F";
         break;
     case METRIC:
-        unitMap["Temperature"] = "C";
+        unitMap["Temperature"] = "°C";
         unitMap["Wind speed"] = "kph";
-        unitMap["Feels like"] = "C";
+        unitMap["Feels like"] = "°C";
         break;
     case UK:
-        unitMap["Temperature"] = "C";
+        unitMap["Temperature"] = "°C";
         unitMap["Wind speed"] = "mph";
-        unitMap["Feels like"] = "C";
+        unitMap["Feels like"] = "°C";
         break;
   }
 };
