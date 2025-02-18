@@ -87,7 +87,6 @@ function createDayCard(day) {
 
 function getDateString(epochTime) {
   const date = new Date(epochTime * 1000);
-  console.log("Date from the function: " + date.toString());
   if (isTomorrow(date)) {
     return "Tomorrow";
   } else {
